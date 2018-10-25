@@ -11,7 +11,6 @@ const Inner = styled.div `
 max-width: 1000px;
 margin: 0 auto;
 padding: 2rem;
-background: red;
 `
 
 class Page extends Component {
@@ -20,7 +19,7 @@ class Page extends Component {
       <StyledPage>
         <Meta />
         <Header />
-        {this.props.children}
+        <Inner>{this.props.children}</Inner>
       </StyledPage>
     )
   }

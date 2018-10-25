@@ -331,6 +331,10 @@ var StyledPage = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.wi
   displayName: "Page__StyledPage",
   componentId: "sc-4u7a64-0"
 })(["background:white;color:black"]);
+var Inner = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
+  displayName: "Page__Inner",
+  componentId: "sc-4u7a64-1"
+})(["max-width:1000px;margin:0 auto;padding:2rem;"]);
 
 var Page =
 /*#__PURE__*/
@@ -349,22 +353,28 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StyledPage, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14
+          lineNumber: 19
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Meta__WEBPACK_IMPORTED_MODULE_2__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15
+          lineNumber: 20
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 16
+          lineNumber: 21
         },
         __self: this
-      }), this.props.children);
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Inner, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22
+        },
+        __self: this
+      }, this.props.children));
     }
   }]);
 

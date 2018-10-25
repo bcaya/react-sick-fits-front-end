@@ -19,5 +19,7 @@ pids
 *.seed
 *.pid.lock
 
-# next.js build output
-.next
+node_modules
+
+
+/Users/Bobby/Desktop/DPL/my_projects/sick-fits/frontend/node_modules
