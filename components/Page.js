@@ -24,7 +24,7 @@ margin: 0 auto;
 padding: 2rem;
 `
 
-injectGlobal `
+injectGlobal ` 
   @font-face{
     font-family: 'radnika_next';
     src: url('/static/radnikanext-medium-webfont.woff2')
@@ -45,6 +45,10 @@ injectGlobal `
     font-size: 1.5rem;
     line-height: 2;
     font-family: 'radnika_next';
+  }
+  a {
+    text-decoration: none;
+    color: ${theme.black};
   }
 
 `
