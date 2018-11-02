@@ -21,17 +21,16 @@ const UPDATE_ITEM_MUTATION = gql`
     $title: String!
     $description: String!
     $price: Int!
-    $image: String
-    $largeImage: String
     ){
     createItem(
       title: $title
       description: $description
       price: $price
-      image: $image
-      largeImage: $largeImage
     ) {
       id
+      title
+      description
+      price
     }
   }
 `
@@ -60,19 +59,8 @@ const UPDATE_ITEM_MUTATION = gql`
           return(
 
             <Mutation mutation={UPDATE_ITEM_MUTATION} variables={this.state}>
-              {(createItem, {loading, error}) => (       
-            <Form onSubmit={async e => {
-              //Stop the form from submitting
-              e.preventDefault();
-              //call the mutation 
-              const res = await createItem();
-              // change them to single item page
-              console.log(res)
-              Router.push({
-                pathname: '/item',
-                query: {id: res.data.createItem.id}
-              })
-            }}>
+              {(updateItem, {loading, error}) => (       
+            <Form onSubmit={e => this.updateItem(e, updateItem)}>
             <Error error={error}/>
               <fieldset disabled={loading} aria-busy={loading}>
                 <label htmlFor="title">
@@ -83,7 +71,7 @@ const UPDATE_ITEM_MUTATION = gql`
                     name="title"
                     placeholder="Title" 
                     required
-                    value={this.state.title}
+                    defaultValue={data.item.title}
                     onChange={this.handleChange}
                   />
                 </label>
@@ -95,7 +83,7 @@ const UPDATE_ITEM_MUTATION = gql`
                     name="price"
                     placeholder="Price" 
                     required
-                    value={this.state.price}
+                    defaultValue={data.item.price}
                     onChange={this.handleChange}
                   />
                 </label>
@@ -107,11 +95,11 @@ const UPDATE_ITEM_MUTATION = gql`
                     name="description"
                     placeholder="Description" 
                     required
-                    value={this.state.description}
+                    defaultValue={this.state.description}
                     onChange={this.handleChange}
                   />
                 </label>
-                <button type="submit">Submit</button>
+                <button type="submit">Save Changes</button>
               </fieldset>
             </Form>
             )}
