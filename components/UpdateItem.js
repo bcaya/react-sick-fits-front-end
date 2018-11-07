@@ -18,11 +18,13 @@ const SINGLE_ITEM_QUERY = gql`
 `
 const UPDATE_ITEM_MUTATION = gql`
   mutation UPDATE_ITEM_MUTATION(    
-    $title: String!
-    $description: String!
-    $price: Int!
+    $id: ID!
+    $title: String
+    $description: String
+    $price: Int
     ){
-    createItem(
+    updateItem(
+      id: $id
       title: $title
       description: $description
       price: $price
@@ -33,20 +35,29 @@ const UPDATE_ITEM_MUTATION = gql`
       price
     }
   }
-`
+`;
 
 
  class UpdateItem extends Component {
-   state = {
+   state = {};
 
-   };
    handleChange = (e) => {
      const { name, type, value } = e.target;
-     const val = type === 'number' ? parseFloat(value) :
-     value;
+     const val = type === 'number' ? parseFloat(value) : value;
      this.setState({ [name]: val})
    };
-
+  updateItem = async(e, updateItemMutation) => {
+    e.preventDefault();
+    console.log('Updating Item!');
+    console.log(this.state)
+    const res = await updateItemMutation({
+      variables: {
+        id: this.props.id, 
+        ...this.state,
+      },
+    });
+    console.log('Updated');
+  }
   render() {
     return (
       <Query 
@@ -56,8 +67,8 @@ const UPDATE_ITEM_MUTATION = gql`
       }}>
         {({data, loading}) => {
           if(loading) return <p>Loading...</p>
+          if(!data.item) return <p>No Item Found For ID {this.props.id}</p>
           return(
-
             <Mutation mutation={UPDATE_ITEM_MUTATION} variables={this.state}>
               {(updateItem, {loading, error}) => (       
             <Form onSubmit={e => this.updateItem(e, updateItem)}>
@@ -90,12 +101,12 @@ const UPDATE_ITEM_MUTATION = gql`
                 <label htmlFor="description">
                   Description
                   <textarea
-                    type="text"
+                    type="textarea"
                     id="description"
                     name="description"
                     placeholder="Description" 
                     required
-                    defaultValue={this.state.description}
+                    defaultValue={data.item.description}
                     onChange={this.handleChange}
                   />
                 </label>
