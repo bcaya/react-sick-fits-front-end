@@ -23,3 +23,7 @@ node_modules
 
 
 /Users/Bobby/Desktop/DPL/my_projects/sick-fits/frontend/node_modules
+.next/build-manifest.json
+.next/server/pages-manifest.json
+.next/static/runtime/webpack.js
+.next/static/runtime/webpack.js.map
