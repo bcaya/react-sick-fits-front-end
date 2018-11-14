@@ -14,4 +14,4 @@ const SignupPage = props => (
     <Signup />
   </Columns>
 )
-export default Signup;
+export default SignupPage;
