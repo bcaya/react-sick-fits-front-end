@@ -28,9 +28,14 @@ const SIGNUP_MUTATION = gql`
     return (
     <Mutation mutation={SIGNUP_MUTATION} variables={this.state}>
       {(signup, {error, loading}) => {
-      return (<Form>
-        <fieldset>
+      return (<Form method="post" onSubmit={async (e) => {
+        e.preventDefault();
+        await signup();
+        this.setState({ name: '', email: '', password: ''})
+      }}>
+        <fieldset disabled={loading} aria-busy={loading}>
           <h2>Sign Up for An Account</h2>
+          <Error error={error} />
           <label htmlFor="email">
             Email
             <input 
