@@ -1,15 +1,19 @@
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
-import { userInfo } from 'os';
+
 
 const CURRENT_USER_QUERY = gql `
-  me {
-    id
-    email
-    name
-    permissions
+  query{
+    me {
+      id
+      email
+      name
+      permissions
+    }
   }
+  
+
 `;
 
 const User = props => (
