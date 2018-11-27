@@ -27,3 +27,7 @@ node_modules
 .next/server/pages-manifest.json
 .next/static/runtime/webpack.js
 .next/static/runtime/webpack.js.map
+.next/server/static/development/pages/_app.js
+.next/server/static/development/pages/_app.js.map
+.next/static/development/pages/_app.js
+.next/static/development/pages/_app.js.map
