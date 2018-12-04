@@ -26,7 +26,7 @@ const REQUEST_RESET_MUTATION = gql`
     <Mutation 
       mutation={REQUEST_RESET_MUTATION}
       variables={this.state}>
-      {(reset, {error, loading}) => {
+      {(reset, {error, loading, called }) => {
       return (<Form method="post" onSubmit={async (e) => {
         e.preventDefault();
         await reset();
@@ -35,6 +35,7 @@ const REQUEST_RESET_MUTATION = gql`
         <fieldset disabled={loading} aria-busy={loading}>
           <h2>Request a Password Reset</h2>
           <Error error={error} />
+          {!error && !loading &&called && <p>Success! Check your email for a password reset link.</p>}
           <label htmlFor="email">
             Email
             <input 
