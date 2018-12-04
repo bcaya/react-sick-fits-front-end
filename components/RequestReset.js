@@ -12,12 +12,11 @@ const REQUEST_RESET_MUTATION = gql`
   }
 `
 
- class Signin extends Component {
+ class RequestReset extends Component {
    state = {
 
      email: ''
    }
-
    saveToState = (e) => {
      this.setState({[e.target.name]: e.target.value })
    }
@@ -55,4 +54,4 @@ const REQUEST_RESET_MUTATION = gql`
   }
 }
 
-export default Signin
+export default RequestReset;
