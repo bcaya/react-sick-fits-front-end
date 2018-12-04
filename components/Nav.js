@@ -7,7 +7,7 @@ const Nav = () => (
   <User>
     {({data: { me } }) => {
       if (me) return <p>{me.name}</p>
-      return <p>User</p>
+      return null;
     }}
   </User>
     <Link href="/items">
@@ -25,7 +25,6 @@ const Nav = () => (
     <Link href="/me">
       <a>Account</a>
     </Link>
-    <Signout />
   </NavStyles>
 )
 
