@@ -69,4 +69,4 @@ const SIGNIN_MUTATION = gql`
   }
 }
 
-export default Signin
+export default Signin;
