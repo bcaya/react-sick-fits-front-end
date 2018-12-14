@@ -2,6 +2,17 @@ import { Query } from 'react-apollo';
 import Error from './ErrorMessage';
 import gql from 'graphql-tag';
 import Table from './styles/Table'; 
+import SickButton from './styles/SickButton'; 
+import PropTypes from 'prop-types';
+
+const possiblePermissions = [
+  'ADMIN',
+  'USER',
+  'ITEMCREATE',
+  'ITEMUPDATE',
+  'ITEMDELETE',
+  'PERMISSION',
+]
 
 const ALL_USERS_QUERY = gql `
   query{ 
@@ -16,7 +27,7 @@ const ALL_USERS_QUERY = gql `
 
 const Permissions = (props) => (
   <Query query={ALL_USERS_QUERY}>
-    {({data, loading, error}) => console.log(data) || (
+    {({data, loading, error}) =>(
       <div>
       <Error error={error} />
         <div>
@@ -26,9 +37,12 @@ const Permissions = (props) => (
               <tr>
                 <th>Name</th>
                 <th>Email</th>
+                {possiblePermissions.map(permission => 
+                <th>{permission}</th>)}
+                <th>look below</th>
               </tr>
             </thead>
-            <tbody>{data.users.map(user => user.name)} 
+            <tbody>{data.users.map(user => <User user={user} />)} 
             </tbody>
           </Table>
         </div>
@@ -36,5 +50,35 @@ const Permissions = (props) => (
     )}
   </Query>
 );
+
+class User extends React.Component { 
+  static propTypes = {
+    user: PropTypes.object.shape({
+      name: PropTypes.string,
+      id: PropTypes.string,
+      id: PropTypes.string,
+      permissions: PropTypes.array,
+    }).isRequired,
+  }
+  render(){
+    const user = this.props.user;
+    return(
+      <tr>
+        <td>{user.name}</td>
+        <td>{user.email}</td>
+        {possiblePermissions.map(permission => (
+          <td>
+            <label htmlFor={`${user.id}-permission-${permission}`}>
+              <input type="checkbox"/>
+            </label>
+          </td>
+        ))}
+        <td>
+          <SickButton>Update</SickButton>
+        </td>
+      </tr>
+    )
+  }
+}
 
 export default Permissions;
