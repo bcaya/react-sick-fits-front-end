@@ -26,7 +26,7 @@ const REQUEST_RESET_MUTATION = gql`
       mutation={REQUEST_RESET_MUTATION}
       variables={this.state}>
       {(reset, {error, loading, called }) => {
-      return (<Form method="post" onSubmit={async (e) => {
+      return (<Form method="post" data-test="form" onSubmit={async (e) => {
         e.preventDefault();
         await reset();
         this.setState({ email: ''})
@@ -55,3 +55,4 @@ const REQUEST_RESET_MUTATION = gql`
 }
 
 export default RequestReset;
+export { REQUEST_RESET_MUTATION };
