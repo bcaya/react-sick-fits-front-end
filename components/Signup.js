@@ -76,3 +76,4 @@ const SIGNUP_MUTATION = gql`
 }
 
 export default Signup
+export { SIGNUP_MUTATION };
