@@ -3,7 +3,6 @@
 exports[`<Signup /> renders and matches snapshot 1`] = `
 <form
   className="Form-sc-1xszr8q-0 krRxky"
-  data-test="form"
   method="post"
   onSubmit={[Function]}
 >
@@ -12,7 +11,7 @@ exports[`<Signup /> renders and matches snapshot 1`] = `
     disabled={false}
   >
     <h2>
-      Request a Password Reset
+      Sign Up for An Account
     </h2>
     <DisplayError
       error={Object {}}
@@ -29,10 +28,34 @@ exports[`<Signup /> renders and matches snapshot 1`] = `
         value=""
       />
     </label>
+    <label
+      htmlFor="name"
+    >
+      Name
+      <input
+        name="name"
+        onChange={[Function]}
+        placeholder="name"
+        type="text"
+        value=""
+      />
+    </label>
+    <label
+      htmlFor="password"
+    >
+      Password
+      <input
+        name="password"
+        onChange={[Function]}
+        placeholder="password"
+        type="password"
+        value=""
+      />
+    </label>
     <button
       type="submit"
     >
-      Request Reset!
+      Sign Up!
     </button>
   </fieldset>
 </form>
